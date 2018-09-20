@@ -1,5 +1,5 @@
 # grapi
-
+Pronounced: gray P I :)
 Using a python API to GrayLog to gather dirt on students.
 
 To use, you must first create an access token following the instructions at:
