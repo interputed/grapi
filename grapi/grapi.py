@@ -19,7 +19,7 @@ class Grapi(object):
     def _get(self, **kwargs):
         response = requests.get(self.url, auth=self._access_token, params=kwargs)
         # TODO: Determine best return type
-        return response.json()
+        return response
 
     def _post(self, **kwargs):
         # TODO: Implement
