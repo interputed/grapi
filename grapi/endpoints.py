@@ -14,6 +14,6 @@ class Endpoints:
         if not set(self._endpoints[endpoint]).issubset(set(keys)):
             raise ValueError("Minimum required arguments missing for this API endpoint.\n" +
                               "Given: {0}\n" +
-                              "Required: {1}\n".format(args, self._endpoints))
+                              "Required: {1}\n".format(keys, self._endpoints))
         else:
             return True
