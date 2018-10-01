@@ -15,8 +15,8 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     keywords=["graylog", "graylog-api", "graylog api", "python3 graylog", "python3 graylog api", "python3 graylog-api"],
     classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: University of Missouri",
+        "Programming Language :: Python :: 3.7",
         "Operating System :: OS Independent",
+        "Topic :: Software Development :: Libraries",
     ],
 )
