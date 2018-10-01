@@ -3,12 +3,12 @@ from urllib.parse import urlparse
 from .endpoints import Endpoints
 
 
-class Grapi(object):
+class Grapi:
     def __init__(self, url, access_token):
 
         self.url = url
         self._endpoint = urlparse(self.url).path
-        self._access_token = (access_token + ":token")
+        self._access_token = (access_token, "token")
         self.methods = {
             "get": self._get,
             "post": self._post,
@@ -18,7 +18,6 @@ class Grapi(object):
 
     def _get(self, **kwargs):
         response = requests.get(self.url, auth=self._access_token, params=kwargs)
-        # TODO: Determine best return type
         return response
 
     def _post(self, **kwargs):
@@ -43,6 +42,7 @@ class Grapi(object):
     def send(self, method, **kwargs):
         endpoints = Endpoints()
         keys = kwargs.keys()
+        print(self._endpoint)
         endpoints.check(keys, self._endpoint)
         return self._methods(method)(**kwargs)
 
