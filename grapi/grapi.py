@@ -4,6 +4,8 @@ from .endpoints import Endpoints
 
 
 class Grapi:
+    # Class currently only supports the GET methods that don't insert values into the url and return a JSON object.
+    # TODO: Extend to support POST, PUT, & DELETE methods.
     def __init__(self, url, access_token):
 
         self.url = url
@@ -44,7 +46,7 @@ class Grapi:
         keys = kwargs.keys()
         print(self._endpoint)
         endpoints.check(keys, self._endpoint)
-        return self._methods(method)(**kwargs)
+        return self._methods(method.lower())(**kwargs)
 
 
 
