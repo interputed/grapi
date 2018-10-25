@@ -127,8 +127,8 @@ class Endpoints:
         }
 
     def check(self, keys, endpoint):
-        print(endpoint)
-        print(self._endpoints[endpoint])
+        # print(endpoint)
+        # print(self._endpoints[endpoint])
         if not set(self._endpoints[endpoint]).issubset(set(keys)):
             raise ValueError("Minimum required arguments missing for this API endpoint.\n" +
                              "Given: {0}\n" +

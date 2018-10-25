@@ -1,4 +1,5 @@
 import requests
+import datetime
 from urllib.parse import urlparse
 from .endpoints import Endpoints
 
@@ -41,12 +42,35 @@ class Grapi:
                              "Please use one of the following: {1}".format(method, self.methods.keys()))
         return self.methods[method]
 
-    def send(self, method, **kwargs):
+    def send(self, method, date_step=False, **kwargs):
         endpoints = Endpoints()
         keys = kwargs.keys()
-        print(self._endpoint)
         endpoints.check(keys, self._endpoint)
-        return self._methods(method.lower())(**kwargs)
+
+        if date_step:
+            return self._methods(method.lower())(**kwargs)
+
+        else:
+            start = datetime.datetime.strptime(kwargs["from"], "%Y-%m-%d %H:%M:%S")
+            end = datetime.datetime.strptime(kwargs["to"], "%Y-%m-%d %H:%M:%S")
+            one_day = datetime.timedelta(days=1)
+            start_frame = start
+            end_frame = start + one_day
+            responses = []
+
+            while end_frame <= end:
+                kwargs["from"] = start_frame
+                kwargs["to"] = end_frame
+                responses.append(self._methods(method.lower())(**kwargs))
+                start_frame += one_day
+                end_frame += one_day
+
+            return responses
+
+
+
+
+
 
 
 

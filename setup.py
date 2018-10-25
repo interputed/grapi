@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="grapi",
-    version="0.1.1",
+    version="0.1.3",
     author="Andrew Craighead",
     author_email="craigheadap@missouri.edu",
     description="Python 3 bindings for Graylog's REST API",
