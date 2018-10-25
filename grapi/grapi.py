@@ -47,7 +47,7 @@ class Grapi:
         keys = kwargs.keys()
         endpoints.check(keys, self._endpoint)
 
-        if date_step:
+        if not date_step:
             return self._methods(method.lower())(**kwargs)
 
         else:
