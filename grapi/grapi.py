@@ -20,7 +20,8 @@ class Grapi:
         }
 
     def _get(self, **kwargs):
-        response = requests.get(self.url, auth=self._access_token, params=kwargs)
+        h = {'Accept': 'application/json'}
+        response = requests.get(self.url, auth=self._access_token, headers=h, params=kwargs)
         return response
 
     def _post(self, **kwargs):
